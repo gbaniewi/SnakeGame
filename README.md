@@ -13,3 +13,6 @@ Added food
 
 v1.0.4
 Added score
+
+v1.0.4.1
+Solved Missing borders #5 issue

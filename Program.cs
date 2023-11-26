@@ -68,6 +68,34 @@ class Program
     {
         Console.Clear();
 
+        // Rysowanie górnej granicy planszy
+        for (int i = 0; i <= screenWidth + 1; i++)
+        {
+            Console.SetCursorPosition(i, 0);
+            Console.Write("-");
+        }
+
+        // Rysowanie dolnej granicy planszy
+        for (int i = 0; i <= screenWidth + 1; i++)
+        {
+            Console.SetCursorPosition(i, screenHeight + 1);
+            Console.Write("-");
+        }
+
+        // Rysowanie lewej granicy planszy
+        for (int i = 1; i <= screenHeight; i++)
+        {
+            Console.SetCursorPosition(0, i);
+            Console.Write("|");
+        }
+
+        // Rysowanie prawej granicy planszy
+        for (int i = 1; i <= screenHeight; i++)
+        {
+            Console.SetCursorPosition(screenWidth + 1, i);
+            Console.Write("|");
+        }
+
         Console.SetCursorPosition(foodX, foodY);
         Console.Write(foodChar);
 
@@ -77,7 +105,7 @@ class Program
             Console.Write(snakeChar);
         }
 
-        Console.SetCursorPosition(screenWidth +1, 0);
+        Console.SetCursorPosition(screenWidth +3, 0);
         Console.Write($"Score: {score}");
     }
     static void MoveSnake()
@@ -139,7 +167,7 @@ class Program
 
     static void CheckCollision()
     {
-        if (snakeX[0] < 0 || snakeX[0] >= screenWidth || snakeY[0] < 0 || snakeY[0] >= screenHeight)
+        if (snakeX[0] <= 0 || snakeX[0] >= screenWidth +1 || snakeY[0] <= 0 || snakeY[0] >= screenHeight +1)
         {
             isGameOver = true;
         }
