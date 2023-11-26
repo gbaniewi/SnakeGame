@@ -8,9 +8,13 @@ class Program
     static int screenWidth = 100;
     static int screenHeight = 50;
     static char snakeChar = 'O';
+    static char foodChar = '@';
 
     static List<int> snakeX = new List<int>() { 0 };
     static List<int> snakeY = new List<int>() { 0 };
+
+    static int foodX;
+    static int foodY;
 
     static bool isGameOver = false;
 
@@ -34,6 +38,7 @@ class Program
 
             MoveSnake();
             CheckCollision();
+            CheckFood();
 
             if (!isGameOver)
             {
@@ -52,11 +57,17 @@ class Program
     {
         snakeX[0] = screenWidth / 2;
         snakeY[0] = screenHeight / 2;
+
+        foodX = new Random().Next(0, screenWidth);
+        foodY = new Random().Next(0, screenHeight);
     }
 
     static void DrawGame()
     {
         Console.Clear();
+
+        Console.SetCursorPosition(foodX, foodY);
+        Console.Write(foodChar);
 
         for (int i = 0; i < snakeX.Count; i++)
         {
@@ -134,6 +145,20 @@ class Program
             {
                 isGameOver = true;
             }
+        }
+    }
+
+    static void CheckFood()
+    {
+        if (snakeX[0] == foodX && snakeY[0] == foodY)
+        {
+            // Snake ate the food
+            snakeX.Add(0);
+            snakeY.Add(0);
+
+            // Generate new food
+            foodX = new Random().Next(0, screenWidth);
+            foodY = new Random().Next(0, screenHeight);
         }
     }
 }
