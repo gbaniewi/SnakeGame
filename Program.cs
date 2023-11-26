@@ -10,55 +10,79 @@ class Program
     static char snakeChar = 'O';
     static char foodChar = '@';
 
-    static List<int> snakeX = new List<int>() { 1, 0 };
-    static List<int> snakeY = new List<int>() { 0, 0 };
+    static List<int> snakeX;
+    static List<int> snakeY;
 
     static int foodX;
     static int foodY;
 
     static bool isGameOver = false;
 
-    static int score = 0;
+    static int score;
 
-    static int delay = 100;
+    static int delay;
+
+    static Direction snakeDirection;
 
     static void Main()
     {
         Console.CursorVisible = false;
-        Console.WindowHeight = screenHeight + 2;
-        Console.WindowWidth = screenWidth + 15;
-
-        ConsoleKeyInfo keyInfo;
-
-        InitializeGame();
-
-        while (!isGameOver)
+        do
         {
-            if (Console.KeyAvailable)
+            Console.Clear();
+
+            Console.WindowHeight = screenHeight + 2;
+            Console.WindowWidth = screenWidth + 15;
+
+            ConsoleKeyInfo keyInfo;
+
+            InitializeGame();
+
+            for (int i = 3; i > 0; i--)
             {
-                keyInfo = Console.ReadKey();
-                ChangeDirection(keyInfo.Key);
+                Console.Clear();
+                Console.WriteLine($"Starting new game in {i}...");
+                Thread.Sleep(1000);
             }
 
-            MoveSnake();
-            CheckCollision();
-            CheckFood();
-
-            if (!isGameOver)
+            while (!isGameOver)
             {
-                DrawGame();
-                Thread.Sleep(delay);
+                if (Console.KeyAvailable)
+                {
+                    keyInfo = Console.ReadKey();
+                    ChangeDirection(keyInfo.Key);
+                }
+
+                MoveSnake();
+                CheckCollision();
+                CheckFood();
+
+                if (!isGameOver)
+                {
+                    DrawGame();
+                    Thread.Sleep(delay);
+                }
             }
-        }
+
+            Console.Clear();
+            Console.WriteLine("Game Over!");
+            Console.WriteLine($"Your Score: {score}");
+            Console.Write("Play again? (y/n): ");
+        } while (Console.ReadKey().Key == ConsoleKey.Y);
 
         Console.Clear();
-        Console.WriteLine("Game Over!");
-        Console.WriteLine("Press any key to exit...");
-        Console.ReadKey();
+        Console.WriteLine("Thanks for playing!");
     }
 
     static void InitializeGame()
     {
+        snakeX = new List<int>() { 1, 0 };
+        snakeY = new List<int>() { 0, 0 };
+        isGameOver = false;
+        score = 0;
+        delay = 100;
+        snakeDirection = Direction.Right;
+
         snakeX[0] = screenWidth / 2;
         snakeY[0] = screenHeight / 2;
 
@@ -141,8 +165,6 @@ class Program
         Left,
         Right
     }
-
-    static Direction snakeDirection = Direction.Right;
 
     static void ChangeDirection(ConsoleKey key)
     {
