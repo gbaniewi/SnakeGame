@@ -10,3 +10,6 @@ Added collisions
 
 v1.0.3
 Added food
+
+v1.0.4
+Added score

@@ -18,11 +18,13 @@ class Program
 
     static bool isGameOver = false;
 
+    static int score = 0;
+
     static void Main()
     {
         Console.CursorVisible = false;
-        Console.WindowHeight = screenHeight + 1;
-        Console.WindowWidth = screenWidth + 1;
+        Console.WindowHeight = screenHeight + 2;
+        Console.WindowWidth = screenWidth + 15;
 
         ConsoleKeyInfo keyInfo;
 
@@ -74,6 +76,9 @@ class Program
             Console.SetCursorPosition(snakeX[i], snakeY[i]);
             Console.Write(snakeChar);
         }
+
+        Console.SetCursorPosition(screenWidth +1, 0);
+        Console.Write($"Score: {score}");
     }
     static void MoveSnake()
     {
@@ -155,6 +160,9 @@ class Program
             // Snake ate the food
             snakeX.Add(0);
             snakeY.Add(0);
+
+            // Update highscore
+            score += 10;
 
             // Generate new food
             foodX = new Random().Next(0, screenWidth);
