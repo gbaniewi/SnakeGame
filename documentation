@@ -1,0 +1,4 @@
+Gra uruchamia się automatycznie,  sterowanie odbywa się za pomocą klawiszy strzałek.
+Gra polega na zjadaniu wężem pokarmu (@), za co przyznawane są punkty.
+Z każdym zjedzeniem wąż wydłuża się o jedną jednostkę, a jego prędkość wzrasta.
+Gra kończy się, gdy wąż uderzy w granicę planszy lub w samego siebie.
