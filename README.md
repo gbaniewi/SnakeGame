@@ -22,3 +22,6 @@ Solved StartSnakeLength #7 issue
 
 v1.0.4.3
 Solved SpeedIsConstant #9 issue
+
+v1.0.4.4
+Solved Food on border #11 issue

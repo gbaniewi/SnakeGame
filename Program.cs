@@ -200,6 +200,13 @@ class Program
             // Generate new food
             foodX = new Random().Next(0, screenWidth);
             foodY = new Random().Next(0, screenHeight);
+
+            // Generate new food with a check to avoid appearing on the border
+            do
+            {
+                foodX = new Random().Next(1, screenWidth);
+                foodY = new Random().Next(1, screenHeight);
+            } while (snakeX.Contains(foodX) && snakeY.Contains(foodY));
         }
     }
 }
