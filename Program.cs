@@ -33,6 +33,7 @@ class Program
             }
 
             MoveSnake();
+            CheckCollision();
 
             if (!isGameOver)
             {
@@ -117,6 +118,22 @@ class Program
                 if (snakeDirection != Direction.Left)
                     snakeDirection = Direction.Right;
                 break;
+        }
+    }
+
+    static void CheckCollision()
+    {
+        if (snakeX[0] < 0 || snakeX[0] >= screenWidth || snakeY[0] < 0 || snakeY[0] >= screenHeight)
+        {
+            isGameOver = true;
+        }
+
+        for (int i = 1; i < snakeX.Count; i++)
+        {
+            if (snakeX[0] == snakeX[i] && snakeY[0] == snakeY[i])
+            {
+                isGameOver = true;
+            }
         }
     }
 }
