@@ -19,3 +19,6 @@ Solved Missing borders #5 issue
 
 v1.0.4.2
 Solved StartSnakeLength #7 issue
+
+v1.0.4.3
+Solved SpeedIsConstant #9 issue

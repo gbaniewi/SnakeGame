@@ -20,6 +20,8 @@ class Program
 
     static int score = 0;
 
+    static int delay = 100;
+
     static void Main()
     {
         Console.CursorVisible = false;
@@ -45,7 +47,7 @@ class Program
             if (!isGameOver)
             {
                 DrawGame();
-                Thread.Sleep(100);
+                Thread.Sleep(delay);
             }
         }
 
@@ -191,6 +193,9 @@ class Program
 
             // Update highscore
             score += 10;
+
+            // Increase speed
+            delay = Math.Max(10, delay - 5);
 
             // Generate new food
             foodX = new Random().Next(0, screenWidth);
