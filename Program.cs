@@ -10,8 +10,8 @@ class Program
     static char snakeChar = 'O';
     static char foodChar = '@';
 
-    static List<int> snakeX = new List<int>() { 0 };
-    static List<int> snakeY = new List<int>() { 0 };
+    static List<int> snakeX = new List<int>() { 1, 0 };
+    static List<int> snakeY = new List<int>() { 0, 0 };
 
     static int foodX;
     static int foodY;
