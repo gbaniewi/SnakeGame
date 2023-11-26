@@ -25,3 +25,8 @@ Solved SpeedIsConstant #9 issue
 
 v1.0.4.4
 Solved Food on border #11 issue
+
+v1.0.5
+Added question if user want to play again
+Changed InitializeGame function to properly suppor play again feature
+Added countdown before new game
