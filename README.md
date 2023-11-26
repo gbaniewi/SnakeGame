@@ -16,3 +16,6 @@ Added score
 
 v1.0.4.1
 Solved Missing borders #5 issue
+
+v1.0.4.2
+Solved StartSnakeLength #7 issue
